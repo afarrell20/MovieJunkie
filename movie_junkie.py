@@ -1,5 +1,6 @@
 """
     Main script to run application
+    Acadia Farrell (afarre11)
 """
 # Import component classes
 from movie_junkie.app_controller import AppController 
