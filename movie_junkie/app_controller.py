@@ -13,15 +13,15 @@ class AppController:
         self.user_interface.display_title()
         self.user_interface.display_main()
 
-    def next_action():
+    def next_action(self):
         """Get user input from user interface and process the input to execute the 
            associated action"""
         pass
 
-    def app_running():
+    def app_is_running(self):
         """Returns status of the app"""
         return self.app_running
 
-    def quit_app():
+    def quit_app(self):
         """Changes status of app to quit"""
         self.app_running = False

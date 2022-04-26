@@ -11,9 +11,9 @@ from movie_junkie.user_interface.basic_cli import UserInterface
 # Initialize app components 
 app_model = AppModel()
 user_interface = UserInterface()
-app_controller = AppController(app_model=app_model, user_interface=user_interface)
+app_controller = AppController(app_model, user_interface)
 
 
-# App runs until user quits
-while app_controller.app_running():
+# App runs until user quitssi
+while app_controller.app_is_running():
     app_controller.next_action()
