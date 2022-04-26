@@ -9,9 +9,10 @@ from movie_junkie.user_interface.basic_cli import UserInterface
 
 
 # Initialize app components 
-user_interface = UserInterface()
 app_model = AppModel()
-app_controller = AppController(user_interface, app_model)
+user_interface = UserInterface()
+app_controller = AppController(app_model=app_model, user_interface=user_interface)
+
 
 # App runs until user quits
 while app_controller.app_running():
