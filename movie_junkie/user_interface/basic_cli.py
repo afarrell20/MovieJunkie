@@ -7,7 +7,6 @@
     
     Author: Maggie Whittier (mewhitti)
 """
-import code
 import movie_junkie.user_interface.interface_codes as codes
 
 
@@ -15,17 +14,20 @@ class UserInterface:
     def __init__(self):
         self.current_menu = codes.MAIN
     
-    def user_input(self):
+    def user_input(self, prompt):
+        """Get input from user and process input to return either an action code
+           (menu choice) or desired input (i.e. movie name, keyword, etc.)."""
         pass
+
+    def set_current(self, menu_code):
+        """Sets the current menu state to the new, desired menu state. """
+        self.current_menu = menu_code
     
     def display_title(self):
         """Displays the name of the program, Movie Junkie"""
         print('*' * 12)
         print('Movie Junkie')
         print('*' * 12)
-
-    def set_current(self, menu_code):
-        self.current_menu = menu_code
 
     def display_main(self):
         """Acadia Farrell (afarre11) Presents the user with a menu of options.

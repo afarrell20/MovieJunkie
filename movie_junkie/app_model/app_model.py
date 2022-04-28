@@ -25,18 +25,41 @@ class AppModel:
            to data files."""
         pass
         
-    def add_movie_to_list(self, movie_name, list_name):
-        """Adds movie to specified list if movie is not already in
-           list."""
+    def add_movie_want_watch(self, movie_name):
+        """Adds movie to the want to watch list, unless movie already exists."""
         pass
 
-    def remove_movie_to_list(self, movie_name, list_name):
-        """Removes movie from specified list if movie is in list."""
+    def remove_movie_want_watch(self, movie_name):
+        """Removes movie from want to watch list if movie is in list."""
+        pass
+
+    def get_want_watch(self):
+        """Returns list of want to watch movies."""
+        pass
+
+    def add_movie_have_watched(self, movie_name):
+        """Adds movie to the have watched list, unless movie already exists."""
+        pass
+
+    def remove_movie_have_watched(self, movie_name):
+        """Removes movie from have watched list if movie is in list."""
+        pass
+
+    def get_have_watched(self):
+        """Returns list of have watched movies."""
         pass
 
     def add_edit_movie_notes(self, movie_name):
         """Add new note for a specified movie. Replace exisiting note if it is already in 
            the notes list."""
+        pass
+
+    def remove_movie_note(self, movie_name):
+        """Remove exising note for a specified movie, if it exists."""
+        pass
+
+    def get_movie_notes(self):
+        """Returns list of movie notes."""
         pass
 
     def get_movie_reviews(self, movie_name):
