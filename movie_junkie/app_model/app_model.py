@@ -5,14 +5,14 @@
 
     Author: Acadia Farrell (afarre11)
 """
-import cinemagoer 
+import imdb 
 
 class AppModel:
     def __init__(self):
         self.want_to_watch = {}
         self.have_watched = {}
         self.movie_notes = {}
-        self.movie_repo = Cinemagoer()
+        self.movie_repo = imdb.Cinemagoer()
         self.load_data()
         
     def load_data(self):

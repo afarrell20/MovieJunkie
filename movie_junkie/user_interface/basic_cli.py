@@ -18,21 +18,29 @@ class UserInterface:
         """Get input from user and process input to return either an action code
            (menu choice) or desired input (i.e. movie name, keyword, etc.)."""
         pass
-
-    def set_current(self, menu_code):
-        """Sets the current menu state to the new, desired menu state. """
-        self.current_menu = menu_code
     
     def display_title(self):
-        """Displays the name of the program, Movie Junkie"""
+        """Displays the name of the program, Movie Junkie."""
         print('*' * 12)
         print('Movie Junkie')
         print('*' * 12)
 
+    def display_error(self, error_message):
+        """Utility function for displaying error messages to the interface to prevent code
+           from crashing."""
+        pass
+
+    def display_message(self, message):
+        """Utility function for displaying general messages to the interface."""
+        pass
+
     def display_main(self):
-        """Acadia Farrell (afarre11) Presents the user with a menu of options.
-        Prompts user for input. The input is validated and then returned
-        to the main function as an integer"""
+        """Displays main menu.
+           
+        Author: Acadia Farrell (afarre11)
+        """
+        self.current_menu = codes.MAIN
+
         print('\nSelect from the options below: ')
         one = '1. Want to Watch List'
         two = '2. Have Watched List'
@@ -47,28 +55,54 @@ class UserInterface:
         print(f'{five:>32}')
         print(f'{six:>12}')
 
-    def display_want_watch(self, formatted_movie_list):
+    def display_want_watch(self, movie_list):
+        """Displays want to watch menu."""
         pass
 
-    def display_have_watch(self, formatted_movie_list):
+    def display_have_watch(self, movie_list):
+        """Displays have watched menu."""
         pass
 
-    def display_movie_notes(self, formatted_movie_notes):
+    def display_movie_notes(self, movie_notes):
+        """Displays movie notes menu."""
         pass
 
-    def display_movie_reviews(self, formatted_movie_reviews):
+    def display_movie_reviews(self, movie_reviews):
+        """Displays movie review menu."""
         pass
 
-    def display_movie_reccomendations(self, formatted_movie_recs):
+    def display_movie_recommendations(self, movie_recs):
+        """Displays movie recommendation menu."""
         pass
     
-    def pretty_print_want_watch(self):
+    def pretty_print_movie_list(self, movie_list):
+        """Displays specified movie list in an organized manner. If multiple movies are in 
+           the list, only the first four movies and the final movie at the end
+           are displayed with ... in the middle. Prints each movie on a seperate line
+           in alphabetical order. 
+           Example:
+
+            Dumb and Dumber
+            Dune
+            Lovie, Rosie
+            Pitch Perfect 2   
+            ...
+            Ten Things I Hate About You
+        """
         pass
 
-    def pretty_print_have_watched(self):
-        pass
+    def pretty_print_movie_notes(self, movie_notes):
+        """Displays specified movie list with notes in an organized manner. If multiple movies are in 
+           the list, only the first four movies and the final movie at the end
+           are displayed with ... in the middle. Prints each movie on a seperate line
+           in alphabetical order. 
+           Example:
 
-    def pretty_print_movie_notes(self):
+            Dumb and Dumber --> Note
+            Dune --> Note
+            Lovie, Rosie --> Note
+            Pitch Perfect 2 --> Note 
+            ...
+            Ten Things I Hate About You --> Note
+        """
         pass
-        
-
