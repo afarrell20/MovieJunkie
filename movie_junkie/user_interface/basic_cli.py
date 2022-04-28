@@ -60,8 +60,13 @@ class UserInterface:
     def display_movie_reccomendations(self, formatted_movie_recs):
         pass
     
+    def pretty_print_want_watch(self):
+        pass
 
+    def pretty_print_have_watched(self):
+        pass
 
-
+    def pretty_print_movie_notes(self):
+        pass
         
 
