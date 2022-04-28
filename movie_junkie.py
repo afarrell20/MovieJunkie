@@ -14,6 +14,6 @@ user_interface = UserInterface()
 app_controller = AppController(app_model, user_interface)
 
 
-# App runs until user quitssi
+# App runs until user quits
 while app_controller.app_is_running():
     app_controller.next_action()

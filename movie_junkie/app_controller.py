@@ -20,6 +20,18 @@ class AppController:
         """Get user input from user interface and process the input to execute the 
            associated action."""
         pass
+    # Calls user input from user interface class
+    #Example if user is on main and enters option to go to have watched list menu:
+    # if input = codes.MAIN_HAVE:
+    #   have_watched_list = app_model.get_have_watched()
+    #   user_interface.display_have_watch(have_watched_list)
+    # Now user clicks add movie in this menu:
+    # elif input = codes.HAVE_WATCHED_ADD:
+    #   movie_name = user_interface.user_input("Enter movie title: ")   
+    #   result = app_model.add_movie_have_watched(movie_name)
+    #   user_interface.display_message(result)
+    #    have_watched_list = app_model.get_have_watched()
+    #   user_interface.display_have_watched(have_watched_list)
 
     def app_is_running(self):
         """Returns status of the app."""
