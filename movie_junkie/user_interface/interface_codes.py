@@ -1,1 +1,38 @@
+"""
+    Definition of codes that will be called by the app_controller and 
+    user_interface.
+    Author: Acadia Farrell (afarre11) 
+"""
+
+# Menu Codes
 MAIN = 1
+WANT = 2
+HAVE = 3
+NOTES = 4
+REVIEWS = 5
+RECOMENDATIONS = 6
+
+# Action Codes
+MAIN_WANT = 11
+MAIN_HAVE = 12
+MAIN_NOTES = 13
+MAIN_REVIEWS = 14
+MAIN_RECOMENDATIONS = 15
+MAIN_QUIT = 16
+
+WANT_TO_ADD = 21
+WANT_TO_REMOVE = 22
+WANT_MAIN = 23
+
+HAVE_WATCHED_ADD = 31
+HAVE_WATCHED_REMOVE = 32
+HAVE_WATCHED_MAIN = 33
+
+NOTES_ADD = 41
+NOTES_MAIN = 42
+
+REVIEWS_GET = 51
+REVIEWS_MAIN = 52
+
+RECOMENDATIONS_GET = 61
+RECOMENDATIONS_MAIN = 62
