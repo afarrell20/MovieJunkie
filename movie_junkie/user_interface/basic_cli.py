@@ -17,7 +17,13 @@ class UserInterface:
     def user_input(self, prompt):
         """Get input from user and process input to return either an action code
            (menu choice) or desired input (i.e. movie name, keyword, etc.)."""
-        pass
+        user_input = input(prompt)
+
+        try:
+            action_code = int(str(self.current_menu) + user_input)
+            return action_code
+        except ValueError:
+            return user_input
     
     def display_title(self):
         """Displays the name of the program, Movie Junkie."""
@@ -28,11 +34,11 @@ class UserInterface:
     def display_error(self, error_message):
         """Utility function for displaying error messages to the interface to prevent code
            from crashing."""
-        pass
+        print(error_message)
 
     def display_message(self, message):
         """Utility function for displaying general messages to the interface."""
-        pass
+        print(message)
 
     def display_main(self):
         """Displays main menu.
@@ -45,35 +51,61 @@ class UserInterface:
         one = '1. Want to Watch List'
         two = '2. Have Watched List'
         three = '3. My Movie Notes'
-        four = '4. View Critic Ratings'
-        five = '5. Get Movie Recommendation'
+        four = '4. Get movie reviews'
+        five = '5. Get Movie Recommendations'
         six = '6. Quit'
         print(f'\n{one:>26}')
         print(f'{two:>25}')
         print(f'{three:>22}')
-        print(f'{four:>27}')
-        print(f'{five:>32}')
+        print(f'{four:>25}')
+        print(f'{five:>33}')
         print(f'{six:>12}')
 
     def display_want_watch(self, movie_list):
         """Displays want to watch menu."""
-        pass
+        self.current_menu = codes.WANT
+
+        self.pretty_print_movie_list(movie_list)
+        print('\nSelect from the options below: ')
+        one = '1. Add Movie'
+        two = '2. Remove Movie'
+        third = '3. Exit to Main Menu'
+        print(f'\n{one:>17}')
+        print(f'{two:>20}')
+        print(f'{third:>25}')
 
     def display_have_watch(self, movie_list):
         """Displays have watched menu."""
-        pass
+        self.current_menu = codes.HAVE
+
+        self.pretty_print_movie_list(movie_list)
+        print('\nSelect from the options below: ')
+        one = '1. Add Movie'
+        two = '2. Remove Movie'
+        third = '3. Exit to Main Menu'
+        print(f'\n{one:>17}')
+        print(f'{two:>20}')
+        print(f'{third:>25}')
 
     def display_movie_notes(self, movie_notes):
         """Displays movie notes menu."""
-        pass
+        print('\nSelect from the options below: ')
+        one = '1. Print Movies That Have Notes'
+        two = '2. Add/Edit Notes'
+        print(f'{one}')
+        print(f'{two}')
 
     def display_movie_reviews(self, movie_reviews):
         """Displays movie review menu."""
-        pass
+        print('\nSelect from the options below: ')
+        one = '1. Print Reviews for Desired Movie'
+        print(f'{one}')
 
     def display_movie_recommendations(self, movie_recs):
         """Displays movie recommendation menu."""
-        pass
+        print('\nSelect from the options below: ')
+        one = '1. Print Recommendation From Desired Genre'
+        print(f'{one}')
     
     def pretty_print_movie_list(self, movie_list):
         """Displays specified movie list in an organized manner. If multiple movies are in 
@@ -89,7 +121,8 @@ class UserInterface:
             ...
             Ten Things I Hate About You
         """
-        pass
+        for movie in sorted(movie_list):
+            print(movie)
 
     def pretty_print_movie_notes(self, movie_notes):
         """Displays specified movie list with notes in an organized manner. If multiple movies are in 
@@ -105,4 +138,5 @@ class UserInterface:
             ...
             Ten Things I Hate About You --> Note
         """
-        pass
+        for movie in sorted(movie_notes):
+            print(f'{movie} --> {movie_notes[movie]}')
