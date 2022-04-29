@@ -18,9 +18,61 @@ class AppController:
 
     def next_action(self):
         """Get user input from user interface and process the input to execute the 
-           associated action."""
-        pass
+           associated action.
+           
+           Authors: Acadia Farrell and Maggie Whittier   
+        """
+        action_code = self.user_interface.user_input("Select from the menu options: ")
     # Calls user input from user interface class
+        if action_code == codes.MAIN:
+            pass
+        elif action_code == codes.MAIN_WANT:
+            pass
+        elif action_code == codes.MAIN_HAVE:
+            have_watched_list = self.app_model.get_have_watched()
+            self.user_interface.display_have_watch(have_watched_list)
+        elif action_code == codes.MAIN_NOTES:
+            pass
+        elif action_code == codes.MAIN_REVIEWS:
+            pass
+        elif action_code == codes.MAIN_RECOMMENDATIONS:
+            pass
+        elif action_code == codes.MAIN_QUIT:
+            pass
+        elif action_code == codes.WANT:
+            pass
+        elif action_code == codes.WANT_WATCH_ADD:
+            pass
+        elif action_code == codes.WANT_WATCH_REMOVE:
+            pass
+        elif action_code == codes.WANT_WATCH_MAIN:
+            pass
+        elif action_code == codes.HAVE_WATCHED_ADD:
+            pass
+        elif action_code == codes.HAVE_WATCHED_REMOVE:
+            pass
+        elif action_code == codes.HAVE_WATCHED_MAIN:
+            pass
+        elif action_code == codes.NOTES_ADD:
+            pass
+        elif action_code == codes.NOTES_REMOVE:
+            pass
+        elif action_code == codes.NOTES_MAIN:
+            pass
+        elif action_code == codes.REVIEWS_GET:
+            pass
+        elif action_code == codes.REVIEWS_MAIN:
+            pass
+        elif action_code == codes.RECOMMENDATIONS_GET:
+            pass
+        elif action_code == codes.RECOMMENDATIONS_MAIN:
+            pass
+        else:
+            self.user_interface.display_message("*** Invalid menu option ***")
+
+
+        
+
     #Example if user is on main and enters option to go to have watched list menu:
     # if input = codes.MAIN_HAVE:
     #   have_watched_list = app_model.get_have_watched()

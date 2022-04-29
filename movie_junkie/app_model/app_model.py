@@ -6,6 +6,10 @@
     Author: Acadia Farrell (afarre11)
 """
 import imdb 
+import pickle 
+
+FOLDER_PATH = "movie_junkie/app_model/data/"
+
 
 class AppModel:
     def __init__(self):
@@ -18,12 +22,21 @@ class AppModel:
     def load_data(self):
         """Loads want to watch list, have watched list, and movie notes
            from data files."""
-        pass
+
+        # Want to watch movie list
+        want_watch_file_path = FOLDER_PATH + "want_watch_list_data.pickle"
+        with open(want_watch_file_path, "rb") as want_watch_file:
+            self.want_to_watch = pickle.load(want_watch_file) 
 
     def save_data(self):
         """Saves want to watch list, have watched list, and movie notes
            to data files."""
-        pass
+
+        # Want to watch movie list
+        want_watch_file_path = FOLDER_PATH + "want_watch_list_data.pickle"
+        with open(want_watch_file_path, "wb") as want_watch_file:
+            pickle.dump(self.want_to_watch, want_watch_file, pickle.HIGHEST_PROTOCOL)
+
         
     def add_movie_want_watch(self, movie_name):
         """Adds movie to the want to watch list, unless movie already exists. Returns result."""
