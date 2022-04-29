@@ -8,7 +8,11 @@
 import imdb 
 import pickle 
 
+
 FOLDER_PATH = "movie_junkie/app_model/data/"
+WANT_WATCH_PATH = FOLDER_PATH + "want_watch_list_data.pickle"
+HAVE_WATCHED_PATH = FOLDER_PATH + "have_watched_list_data.pickle"
+MOVIE_NOTES_PATH = FOLDER_PATH + "movie_notes_list_data.pickle"
 
 
 class AppModel:
@@ -22,22 +26,51 @@ class AppModel:
     def load_data(self):
         """Loads want to watch list, have watched list, and movie notes
            from data files."""
-
         # Want to watch movie list
-        want_watch_file_path = FOLDER_PATH + "want_watch_list_data.pickle"
-        with open(want_watch_file_path, "rb") as want_watch_file:
-            self.want_to_watch = pickle.load(want_watch_file) 
+        try:
+            with open(WANT_WATCH_PATH, "rb") as want_watch_file:
+                self.want_to_watch = pickle.load(want_watch_file) 
+        except FileNotFoundError:
+            self.want_to_watch = {}
+        
+        # Have watched list 
+        try:
+            with open(HAVE_WATCHED_PATH, "rb") as have_watched_file:
+                self.have_watched = pickle.load(have_watched_file) 
+        except FileNotFoundError:
+            self.have_watched = {}
+        
+        # Movie notes list
+        try:
+            with open(MOVIE_NOTES_PATH, "rb") as movie_notes_file:
+                self.movie_notes = pickle.load(movie_notes_file) 
+        except FileNotFoundError:
+            self.movie_notes = {}
 
     def save_data(self):
         """Saves want to watch list, have watched list, and movie notes
            to data files."""
-
         # Want to watch movie list
-        want_watch_file_path = FOLDER_PATH + "want_watch_list_data.pickle"
-        with open(want_watch_file_path, "wb") as want_watch_file:
-            pickle.dump(self.want_to_watch, want_watch_file, pickle.HIGHEST_PROTOCOL)
-
+        try:
+            with open(WANT_WATCH_PATH, "wb") as want_watch_file:
+                pickle.dump(self.want_to_watch, want_watch_file, pickle.HIGHEST_PROTOCOL) 
+        except FileNotFoundError:
+            self.want_to_watch = {}
         
+        # Have watched list 
+        try:
+            with open(HAVE_WATCHED_PATH, "wb") as have_watched_file:
+               pickle.dump(self.have_watched, have_watched_file, pickle.HIGHEST_PROTOCOL)  
+        except FileNotFoundError:
+            self.have_watched = {}
+        
+        # Movie notes list
+        try:
+            with open(MOVIE_NOTES_PATH, "wb") as movie_notes_file:
+                pickle.dump(self.movie_notes, movie_notes_file, pickle.HIGHEST_PROTOCOL) 
+        except FileNotFoundError:
+            self.movie_notes = {}
+      
     def add_movie_want_watch(self, movie_name):
         """Adds movie to the want to watch list, unless movie already exists. Returns result."""
         if movie_name not in self.want_to_watch:
