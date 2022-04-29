@@ -26,41 +26,66 @@ class AppModel:
         pass
         
     def add_movie_want_watch(self, movie_name):
-        """Adds movie to the want to watch list, unless movie already exists."""
-        pass
+        """Adds movie to the want to watch list, unless movie already exists. Returns result."""
+        if movie_name not in self.want_to_watch:
+            self.want_to_watch[movie_name] = 'NO_VALUE_NEEDED'
+            return (f'*** {movie_name} has been added to the want to watch list ***')
+        else:
+            return (f'*** {movie_name} is already in the want to watch list ***')
 
     def remove_movie_want_watch(self, movie_name):
-        """Removes movie from want to watch list if movie is in list."""
-        pass
+        """Removes movie from want to watch list if movie is in list. Returns result."""
+        try:
+            self.want_to_watch.pop(movie_name)
+            return (f'*** {movie_name} has been removed from the want to watch list ***')
+        except KeyError:
+            return (f'*** {movie_name} is not in the want to watch list ***')
 
     def get_want_watch(self):
         """Returns list of want to watch movies."""
-        pass
+        return list(self.want_to_watch.keys())
 
     def add_movie_have_watched(self, movie_name):
-        """Adds movie to the have watched list, unless movie already exists."""
-        pass
+        """Adds movie to the have watched list, unless movie already exists. Returns result."""
+        if movie_name not in self.have_watched:
+            self.have_watched[movie_name] = 'NO_VALUE_NEEDED'
+            return (f'*** {movie_name} has been added to the have watched list ***')
+        else:
+            return (f'*** {movie_name} is already in the have watched list ***')
 
     def remove_movie_have_watched(self, movie_name):
-        """Removes movie from have watched list if movie is in list."""
-        pass
+        """Removes movie from have watched list if movie is in list. Returns result."""
+        try:
+            self.have_watched.pop(movie_name)
+            return (f'*** {movie_name} has been removed from the have watched list ***')
+        except KeyError:
+            return (f'*** {movie_name} is not in the have watched list ***')
 
     def get_have_watched(self):
         """Returns list of have watched movies."""
-        pass
+        return list(self.have_watched.keys())
 
-    def add_edit_movie_notes(self, movie_name):
+    def add_edit_movie_notes(self, movie_name, movie_note):
         """Add new note for a specified movie. Replace exisiting note if it is already in 
-           the notes list."""
-        pass
+           the notes list. Returns result."""
+        if movie_name not in self.movie_notes:
+            self.movie_notes[movie_name] = movie_note
+            return (f'*** Note for {movie_name} has been added to the movie notes list ***')
+        else:
+            self.movie_notes[movie_name] = movie_note
+            return (f'*** Note for {movie_name} updated in the movie notes list ***')
 
     def remove_movie_note(self, movie_name):
-        """Remove exising note for a specified movie, if it exists."""
-        pass
+        """Remove exising note for a specified movie, if it exists. Returns result."""
+        try:
+            self.movie_notes.pop(movie_name)
+            return (f'*** Note for {movie_name} has been removed from the movie notes list ***')
+        except KeyError:
+            return (f'*** Note for {movie_name} is not in the movie notes list ***')
 
     def get_movie_notes(self):
         """Returns list of movie notes."""
-        pass
+        return self.movie_notes
 
     def get_movie_reviews(self, movie_name):
         """Gets and returns list of movie reviews for a specified movie."""
