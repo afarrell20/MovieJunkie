@@ -135,8 +135,24 @@ class AppModel:
 
     def get_movie_reviews(self, movie_name):
         """Gets and returns list of movie reviews for a specified movie."""
-        pass
+        try:
+            movie = self.movie_repo.search_movie(movie_name)
+            test = movie[0]
+            #print(movie[0].movieID)
+            #test = self.movie_repo.get_movie('0250494', info='critic reviews')
+            #print(test)
+            self.movie_repo.update(test, info=['reviews'])
+            print(test.get('critic reviews'))
 
-    def get_movie_recs(self, keyword):
+            #print(movie.get('rating'))
+            #print(movie.infoset2keys)
+        except imdb.IMDbError:
+            return "*** Reviews could not be retrieved ***"
+
+    def get_movie_recommendations(self, keyword):
         """Gets and returns list of movie recommendations for a specified keyword"""
-        pass
+        try:
+            recs_list = self.movie_repo.get_keyword(keyword)
+            return recs_list[0:5]
+        except imdb.IMDbError:
+            return "*** Recommendations could not be retrieved ***"
