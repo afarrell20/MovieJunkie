@@ -89,6 +89,8 @@ class UserInterface:
 
     def display_movie_notes(self, movie_notes):
         """Displays movie notes menu."""
+        self.current_menu = codes.NOTES
+
         print('\nSelect from the options below: ')
         one = '1. Print Movies That Have Notes'
         two = '2. Add/Edit Notes'
@@ -97,12 +99,15 @@ class UserInterface:
 
     def display_movie_reviews(self, movie_reviews):
         """Displays movie review menu."""
+        self.current_menu = codes.REVIEWS
+
         print('\nSelect from the options below: ')
         one = '1. Print Reviews for Desired Movie'
         print(f'{one}')
 
     def display_movie_recommendations(self, movie_recs):
         """Displays movie recommendation menu."""
+        self.current_menu = codes.RECOMMENDATIONS
         print('\nSelect from the options below: ')
         one = '1. Print Recommendation From Desired Genre'
         print(f'{one}')

@@ -23,7 +23,8 @@ class AppController:
            Authors: Acadia Farrell and Maggie Whittier   
         """
         action_code = self.user_interface.user_input("Select from the menu options: ")
-    # Calls user input from user interface class
+        
+        # Calls user input from user interface class
         if action_code == codes.MAIN_HAVE:
             have_watched_list = self.app_model.get_have_watched()
             self.user_interface.display_have_watch(have_watched_list)
@@ -40,9 +41,15 @@ class AppController:
         elif action_code == codes.WANT:
             pass
         elif action_code == codes.WANT_WATCH_ADD:
-            pass
+            movie_name = self.user_interface.user_input("Enter a movie name: ")
+            result = self.app_model.add_movie_want_watch(movie_name)
+            self.user_interface.display_message(result)
+            self.user_interface.display_want_watch()
         elif action_code == codes.WANT_WATCH_REMOVE:
-            pass
+            movie_name = self.user_interface.user_input("Enter a movie to remove: ")
+            result = self.app_model.remove_movie_want_watch(movie_name)
+            self.user_interface.display_message(result)
+            self.user_interface.display_want_watch()
         elif action_code == codes.WANT_WATCH_MAIN:
             pass
         elif action_code == codes.HAVE_WATCHED_ADD:
