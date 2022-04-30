@@ -25,21 +25,31 @@ class AppController:
         action_code = self.user_interface.user_input("Select from the menu options: ")
         
         # Calls user input from user interface class
-        if action_code == codes.MAIN_HAVE:
+        if action_code == codes.MAIN_WANT:
+            want_watch_list = self.app_model.get_want_watch()
+            self.user_interface.display_want_watch(want_watch_list)
+        elif action_code == codes.MAIN_HAVE:
             have_watched_list = self.app_model.get_have_watched()
             self.user_interface.display_have_watch(have_watched_list)
         elif action_code == codes.MAIN_NOTES:
-            pass
+            movie_notes_list = self.app_model.get_movie_notes()
+            self.user_interface.display_movie_notes(movie_notes_list)
         elif action_code == codes.MAIN_REVIEWS:
-            pass
+            movie_name = self.user_interface.user_input("Enter a movie name: ")
+            reviews = self.app_model.get_movie_reviews(movie_name)
+
+            if type(reviews) == list:
+                self.user_interface.display_movie_reviews(reviews)
+            else:
+                self.user_interface.display_error(reviews)
+
+            self.user_interface.display_main()
         elif action_code == codes.MAIN_RECOMMENDATIONS:
             pass
         elif action_code == codes.MAIN_QUIT:
             self.app_model.save_data()
             self.user_interface.display_message("*** Thank you for using MovieJunkie ***")
             self.quit_app()
-        elif action_code == codes.WANT:
-            pass
         elif action_code == codes.WANT_WATCH_ADD:
             movie_name = self.user_interface.user_input("Enter a movie name: ")
             result = self.app_model.add_movie_want_watch(movie_name)
@@ -51,13 +61,13 @@ class AppController:
             self.user_interface.display_message(result)
             self.user_interface.display_want_watch()
         elif action_code == codes.WANT_WATCH_MAIN:
-            pass
+            self.user_interface.display_main()
         elif action_code == codes.HAVE_WATCHED_ADD:
             pass
         elif action_code == codes.HAVE_WATCHED_REMOVE:
             pass
         elif action_code == codes.HAVE_WATCHED_MAIN:
-            pass
+            self.user_interface.display_main()
         elif action_code == codes.NOTES_ADD:
             pass
         elif action_code == codes.NOTES_REMOVE:

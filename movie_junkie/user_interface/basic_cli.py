@@ -103,7 +103,7 @@ class UserInterface:
     def display_movie_reviews(self, movie_reviews):
         """Displays movie review menu."""
         self.current_menu = codes.REVIEWS
-
+        
         print('\nSelect from the options below: ')
         one = '1. Print Reviews for Desired Movie'
         print(f'{one}')
