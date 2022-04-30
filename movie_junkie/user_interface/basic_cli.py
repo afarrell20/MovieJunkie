@@ -82,20 +82,23 @@ class UserInterface:
         print('\nSelect from the options below: ')
         one = '1. Add Movie'
         two = '2. Remove Movie'
-        third = '3. Exit to Main Menu'
+        three = '3. Exit to Main Menu'
         print(f'\n{one:>17}')
         print(f'{two:>20}')
-        print(f'{third:>25}')
+        print(f'{three:>25}')
 
     def display_movie_notes(self, movie_notes):
         """Displays movie notes menu."""
         self.current_menu = codes.NOTES
 
+        self.pretty_print_movie_notes(movie_notes)
         print('\nSelect from the options below: ')
-        one = '1. Print Movies That Have Notes'
-        two = '2. Add/Edit Notes'
-        print(f'{one}')
-        print(f'{two}')
+        one = '1. Add Movie Note'
+        two = '2. Edit Note'
+        three = '3. Exit to Main Menu'
+        print(f'\n{one:>22}')
+        print(f'{two:>17}')
+        print(f'{three:>25}')
 
     def display_movie_reviews(self, movie_reviews):
         """Displays movie review menu."""
@@ -108,10 +111,12 @@ class UserInterface:
     def display_movie_recommendations(self, movie_recs):
         """Displays movie recommendation menu."""
         self.current_menu = codes.RECOMMENDATIONS
+        
+        self.pretty_print_movie_list(movie_recs)
         print('\nSelect from the options below: ')
         one = '1. Print Recommendation From Desired Genre'
         print(f'{one}')
-    
+
     def pretty_print_movie_list(self, movie_list):
         """Displays specified movie list in an organized manner. If multiple movies are in 
            the list, only the first four movies and the final movie at the end
