@@ -9,8 +9,8 @@ import movie_junkie.user_interface.interface_codes as codes
 
 
 class AppController:
-    def __init__(self, model, user_interface):
-        self.model = model 
+    def __init__(self, app_model, user_interface):
+        self.app_model = app_model
         self.user_interface = user_interface
         self.app_running = True
         self.user_interface.display_title()
@@ -24,11 +24,7 @@ class AppController:
         """
         action_code = self.user_interface.user_input("Select from the menu options: ")
     # Calls user input from user interface class
-        if action_code == codes.MAIN:
-            pass
-        elif action_code == codes.MAIN_WANT:
-            pass
-        elif action_code == codes.MAIN_HAVE:
+        if action_code == codes.MAIN_HAVE:
             have_watched_list = self.app_model.get_have_watched()
             self.user_interface.display_have_watch(have_watched_list)
         elif action_code == codes.MAIN_NOTES:
@@ -38,7 +34,9 @@ class AppController:
         elif action_code == codes.MAIN_RECOMMENDATIONS:
             pass
         elif action_code == codes.MAIN_QUIT:
-            pass
+            self.app_model.save_data()
+            self.user_interface.display_message("*** Thank you for using MovieJunkie ***")
+            self.quit_app()
         elif action_code == codes.WANT:
             pass
         elif action_code == codes.WANT_WATCH_ADD:
@@ -68,7 +66,7 @@ class AppController:
         elif action_code == codes.RECOMMENDATIONS_MAIN:
             pass
         else:
-            self.user_interface.display_message("*** Invalid menu option ***")
+            self.user_interface.display_message("*** Invalid menu option **")
 
 
         

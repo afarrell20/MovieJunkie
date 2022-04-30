@@ -136,16 +136,19 @@ class AppModel:
     def get_movie_reviews(self, movie_name):
         """Gets and returns list of movie reviews for a specified movie."""
         try:
-            movie = self.movie_repo.search_movie(movie_name)
-            test = movie[0]
-            #print(movie[0].movieID)
-            #test = self.movie_repo.get_movie('0250494', info='critic reviews')
-            #print(test)
-            self.movie_repo.update(test, info=['reviews'])
-            print(test.get('critic reviews'))
+            # Get movie review data
+            search = self.movie_repo.search_movie(movie_name)
+            movie = search[0]
+            self.movie_repo.update(movie, info = ['reviews'])
+            review_data = movie.get('reviews')
 
-            #print(movie.get('rating'))
-            #print(movie.infoset2keys)
+            # Clean up movie review data
+            reviews = []
+            for i in range(len(review_data)):
+                if i < 5:
+                    reviews.append(review_data[i]['content'])
+            
+            return reviews
         except imdb.IMDbError:
             return "*** Reviews could not be retrieved ***"
 
