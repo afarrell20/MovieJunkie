@@ -63,9 +63,15 @@ class AppController:
         elif action_code == codes.WANT_WATCH_MAIN:
             self.user_interface.display_main()
         elif action_code == codes.HAVE_WATCHED_ADD:
-            pass
+            movie_name = self.user_interface.user_input("Enter a movie to add: ")
+            result = self.app_model.add_movie_have_watched(movie_name)
+            self.user_interface.display_message(result)
+            self.user_interface.display_have_watched()
         elif action_code == codes.HAVE_WATCHED_REMOVE:
-            pass
+            movie_name = self.user_interface.user_input("Enter a movie to remove: ")
+            result = self.app_model.remove_have_watched(movie_name)
+            self.user_interface.display_message(result)
+            self.user_interface.display_have_watched()
         elif action_code == codes.HAVE_WATCHED_MAIN:
             self.user_interface.display_main()
         elif action_code == codes.NOTES_ADD:
@@ -73,11 +79,11 @@ class AppController:
         elif action_code == codes.NOTES_REMOVE:
             pass
         elif action_code == codes.NOTES_MAIN:
-            pass
+            self.user_interface.display_main()
         elif action_code == codes.REVIEWS_GET:
             pass
         elif action_code == codes.REVIEWS_MAIN:
-            pass
+            self.user_interface.display_main()
         elif action_code == codes.RECOMMENDATIONS_GET:
             pass
         elif action_code == codes.RECOMMENDATIONS_MAIN:
