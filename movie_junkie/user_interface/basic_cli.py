@@ -34,10 +34,12 @@ class UserInterface:
     def display_error(self, error_message):
         """Utility function for displaying error messages to the interface to prevent code
            from crashing."""
+        print()
         print(error_message)
 
     def display_message(self, message):
         """Utility function for displaying general messages to the interface."""
+        print()
         print(message)
 
     def display_main(self):
@@ -65,6 +67,8 @@ class UserInterface:
         """Displays want to watch menu."""
         self.current_menu = codes.WANT
 
+        print("\n--- Want To Watch Movie List ---")
+        print()
         self.pretty_print_movie_list(movie_list)
         print('\nSelect from the options below: ')
         one = '1. Add Movie'
@@ -78,6 +82,8 @@ class UserInterface:
         """Displays have watched menu."""
         self.current_menu = codes.HAVE
 
+        print("\n--- Have Watched Movie List ---")
+        print()
         self.pretty_print_movie_list(movie_list)
         print('\nSelect from the options below: ')
         one = '1. Add Movie'
@@ -93,10 +99,10 @@ class UserInterface:
 
         self.pretty_print_movie_notes(movie_notes)
         print('\nSelect from the options below: ')
-        one = '1. Add Movie Note'
-        two = '2. Edit Note'
+        one = '1. Add/Edit Movie Note'
+        two = '2. Remove Movie Note'
         three = '3. Exit to Main Menu'
-        print(f'\n{one:>22}')
+        print(f'\n{one:>27}')
         print(f'{two:>17}')
         print(f'{three:>25}')
 
@@ -110,7 +116,9 @@ class UserInterface:
     def display_movie_recommendations(self, movie_recs):
         """Displays movie recommendation menu."""
         self.current_menu = codes.RECOMMENDATIONS
-        
+
+        print("\n--- Recommendations ---")
+        print()
         self.pretty_print_movie_list(movie_recs)
         self.display_main()
 
@@ -146,6 +154,8 @@ class UserInterface:
             ...
             Ten Things I Hate About You --> Note
         """
+        print()
+        print("--- Movie Notes ---")
         if type(movie_notes) == dict:
             for movie in sorted(movie_notes):
                 print(f'{movie} --> {movie_notes[movie]}')
@@ -156,6 +166,7 @@ class UserInterface:
         """Displays specified movie reviews in an organized manner. Prints each review on a seperate 
            line, separated by a line. """
         try:
+            print()
             print("--- Reviews ---")
             for review in movie_reviews:
                 print(f"\n{review['content']}")

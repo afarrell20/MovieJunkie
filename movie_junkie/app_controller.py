@@ -41,10 +41,11 @@ class AppController:
             movie_name = self.user_interface.user_input("Enter a movie name: ")
             reviews = self.app_model.get_movie_reviews(movie_name)
             self.user_interface.display_movie_reviews(reviews)
-            self.user_interface.display_main()
         # Calls main menu for recs
         elif action_code == codes.MAIN_RECOMMENDATIONS:
-            pass
+            keyword = self.user_interface.user_input("Enter a movie keyword(ex: slapstick-comedy): ")
+            recommendations = self.app_model.get_movie_recommendations(keyword)
+            self.user_interface.display_movie_recommendations(recommendations)
         # Main menu quit function. Displays thank you message
         elif action_code == codes.MAIN_QUIT:
             self.app_model.save_data()
@@ -86,27 +87,25 @@ class AppController:
             self.user_interface.display_main()
         # Calls function to add to notes list
         elif action_code == codes.NOTES_ADD:
-            pass
+            movie_name = self.user_interface.user_input("Enter a movie to add/edit a note for: ")
+            movie_note = self.user_interface.user_input("Enter a movie note: ")
+            result = self.app_model.add_edit_movie_notes(movie_name, movie_note)
+            movie_notes_list = self.app_model.get_movie_notes()
+            self.user_interface.display_message(result)
+            self.user_interface.display_movie_notes(movie_notes_list)
         # Calls function to remove from notes list 
         elif action_code == codes.NOTES_REMOVE:
-            pass
+            movie_name = self.user_interface.user_input("Enter a movie to remove a note from: ")
+            result = self.app_model.remove_movie_note(movie_name)
+            movie_notes_list = self.app_model.get_movie_notes()
+            self.user_interface.display_message(result)
+            self.user_interface.display_movie_notes(movie_notes_list)
         # Calls function to go to main menu for notes
         elif action_code == codes.NOTES_MAIN:
-            pass
+            self.user_interface.display_main()
         # Calls function to get reviews
-        elif action_code == codes.REVIEWS_GET:
-            pass
-        # Reviews main menu 
-        elif action_code == codes.REVIEWS_MAIN:
-            pass
-        # Gets recs
-        elif action_code == codes.RECOMMENDATIONS_GET:
-            pass
-        # Main menu from recs 
-        elif action_code == codes.RECOMMENDATIONS_MAIN:
-            pass
         else:
-            self.user_interface.display_message("*** Invalid menu option **")
+            self.user_interface.display_message("*** Invalid menu option ***")
 
     def app_is_running(self):
         """Returns status of the app."""
