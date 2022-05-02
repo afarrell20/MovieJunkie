@@ -103,24 +103,19 @@ class UserInterface:
     def display_movie_reviews(self, movie_reviews):
         """Displays movie review menu."""
         self.current_menu = codes.REVIEWS
-        
-        print('\nSelect from the options below: ')
-        one = '1. Print Reviews for Desired Movie'
-        print(f'{one}')
-
+    
+        self.pretty_print_movie_reviews(movie_reviews)
+        self.display_main()
+    
     def display_movie_recommendations(self, movie_recs):
         """Displays movie recommendation menu."""
         self.current_menu = codes.RECOMMENDATIONS
         
         self.pretty_print_movie_list(movie_recs)
-        print('\nSelect from the options below: ')
-        one = '1. Print Recommendation From Desired Genre'
-        print(f'{one}')
+        self.display_main()
 
     def pretty_print_movie_list(self, movie_list):
-        """Displays specified movie list in an organized manner. If multiple movies are in 
-           the list, only the first four movies and the final movie at the end
-           are displayed with ... in the middle. Prints each movie on a seperate line
+        """Displays specified movie list in an organized manner. Prints each movie on a seperate line
            in alphabetical order. 
            Example:
 
@@ -131,8 +126,11 @@ class UserInterface:
             ...
             Ten Things I Hate About You
         """
-        for movie in sorted(movie_list):
-            print(movie)
+        if type(movie_list) == dict or type(movie_list) == list:
+            for movie in sorted(movie_list):
+                print(movie)
+        else:
+            print(movie_list)
 
     def pretty_print_movie_notes(self, movie_notes):
         """Displays specified movie list with notes in an organized manner. If multiple movies are in 
@@ -148,5 +146,20 @@ class UserInterface:
             ...
             Ten Things I Hate About You --> Note
         """
-        for movie in sorted(movie_notes):
-            print(f'{movie} --> {movie_notes[movie]}')
+        if type(movie_notes) == dict:
+            for movie in sorted(movie_notes):
+                print(f'{movie} --> {movie_notes[movie]}')
+        else:
+            print(movie_notes)
+
+    def pretty_print_movie_reviews(self, movie_reviews):
+        """Displays specified movie reviews in an organized manner. Prints each review on a seperate 
+           line, separated by a line. """
+        try:
+            print("--- Reviews ---")
+            for review in movie_reviews:
+                print(f"\n{review['content']}")
+                print()
+                print()
+        except TypeError:
+            self.display_error(movie_reviews)
