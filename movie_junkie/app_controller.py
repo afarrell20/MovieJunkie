@@ -54,14 +54,16 @@ class AppController:
         elif action_code == codes.WANT_WATCH_ADD:
             movie_name = self.user_interface.user_input("Enter a movie name: ")
             result = self.app_model.add_movie_want_watch(movie_name)
+            movie_list = self.app_model.get_want_watch()
             self.user_interface.display_message(result)
-            self.user_interface.display_want_watch()
+            self.user_interface.display_want_watch(movie_list)
         # Calls function to allow user to remove movie from watchlist
         elif action_code == codes.WANT_WATCH_REMOVE:
             movie_name = self.user_interface.user_input("Enter a movie to remove: ")
             result = self.app_model.remove_movie_want_watch(movie_name)
+            movie_list = self.app_model.get_want_watch()
             self.user_interface.display_message(result)
-            self.user_interface.display_want_watch()
+            self.user_interface.display_want_watch(movie_list)
         # Main menu for watchlist
         elif action_code == codes.WANT_WATCH_MAIN:
             self.user_interface.display_main()
@@ -69,14 +71,16 @@ class AppController:
         elif action_code == codes.HAVE_WATCHED_ADD:
             movie_name = self.user_interface.user_input("Enter a movie name: ")
             result = self.app_model.add_movie_have_watched(movie_name)
+            movie_list = self.app_model.get_have_watched()
             self.user_interface.display_message(result)
-            self.user_interface.display_have_watch(have_watched_list) # error somewhere here
+            self.user_interface.display_have_watch(movie_list) # error somewhere here
         # Calls function to allow user to remove from have watched list 
         elif action_code == codes.HAVE_WATCHED_REMOVE:
             movie_name = self.user_interface.user_input("Enter a movie to remove: ")
             result = self.app_model.remove_movie_have_watched(movie_name)
+            movie_list = self.app_model.get_have_watched()
             self.user_interface.display_message(result)
-            self.user_interface.display_have_watch(have_watched_list)
+            self.user_interface.display_have_watch(movie_list)
         # Calls main menu for have watched 
         elif action_code == codes.HAVE_WATCHED_MAIN:
             self.user_interface.display_main()

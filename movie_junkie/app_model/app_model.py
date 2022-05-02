@@ -136,19 +136,15 @@ class AppModel:
     def get_movie_reviews(self, movie_name):
         """Gets and returns list of movie reviews for a specified movie."""
         try:
-            # Get movie review data
             search = self.movie_repo.search_movie(movie_name)
-            movie = search[0]
-            self.movie_repo.update(movie, info = ['reviews'])
-            review_data = movie.get('reviews')
+            if len(search) > 0:
+                movie = search[0]
+                self.movie_repo.update(movie, info = ['reviews'])
+                review_data = movie.get('reviews')
 
-            # Clean up movie review data
-            reviews = []
-            for i in range(len(review_data)):
-                if i < 5:
-                    reviews.append(review_data[i]['content'])
-            
-            return reviews
+                return review_data[0:5]
+            else:
+                return(f'*** No reviews found for {movie_name} ***')
         except imdb.IMDbError:
             return "*** Reviews could not be retrieved ***"
 
@@ -156,6 +152,9 @@ class AppModel:
         """Gets and returns list of movie recommendations for a specified keyword"""
         try:
             recs_list = self.movie_repo.get_keyword(keyword)
-            return recs_list[0:5]
+            if len(recs_list) > 0:
+                return recs_list[0:5]
+            else:
+                return(f'*** No movies found for {keyword} ***')
         except imdb.IMDbError:
             return "*** Recommendations could not be retrieved ***"
