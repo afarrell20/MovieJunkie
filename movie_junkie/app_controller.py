@@ -22,7 +22,7 @@ class AppController:
            
            Authors: Acadia Farrell and Maggie Whittier   
         """
-        action_code = self.user_interface.user_input("Select from the menu options: ")
+        action_code = self.user_interface.user_input("\n>>>")
         
         # User on Main Menu, selects to go to Want to Watch Menu
         if action_code == codes.MAIN_WANT:
