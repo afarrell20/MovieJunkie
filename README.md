@@ -1,5 +1,5 @@
 # Movie Junkie
-Summary here
+
 
 ### Required Packages
     To install required packages: pip install -r requirements.txt
