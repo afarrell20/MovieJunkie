@@ -1,10 +1,11 @@
 # Movie Junkie
-    As avid movie watchers, we understand the importance of tracking your movie watching history. We decided that we needed a way to keep track of the movies we have and have not seen. This knowledge was not enough for us, however. There also needs to be a way to keep track of movie notes and our own personal reviews for movies that we have seen. 
+    As avid movie watchers, we understand the importance of tracking your movie watching history. We decided that we needed a way to keep track of the movies we have and have not seen. This knowledge was not enough for us, however. There also needs to be a way to keep track of movie notes and our own personal reviews for movies that we have seen. We also wanted to be able to access movie reviews and reccomendations from imbd. 
 
 ### Required Packages
     To install required packages: pip install -r requirements.txt
 
 ### To Run Movie Junkie
+    -Must be connected to wifi.
     Navigate to the main MovieJunkie directory (not movie_junkie)
 <br>
     Run: python (or python3) movie_junkie.py
