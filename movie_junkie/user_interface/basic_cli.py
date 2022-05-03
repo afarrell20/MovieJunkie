@@ -103,7 +103,7 @@ class UserInterface:
         two = '2. Remove Movie Note'
         three = '3. Exit to Main Menu'
         print(f'\n{one:>27}')
-        print(f'{two:>17}')
+        print(f'{two:>25}')
         print(f'{three:>25}')
 
     def display_movie_reviews(self, movie_reviews):
