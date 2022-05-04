@@ -28,64 +28,64 @@ class AppController:
         if action_code == codes.MAIN_WANT:
             want_watch_list = self.app_model.get_want_watch()
             self.user_interface.display_want_watch(want_watch_list)
-         # User on Main Menu, selects to go to Have to Watch Menu   
+        # User on Main Menu, selects to go to Have Watched Menu  
         elif action_code == codes.MAIN_HAVE:
             have_watched_list = self.app_model.get_have_watched()
             self.user_interface.display_have_watch(have_watched_list)
-        # Calls main menu for movie notes
+        # User on Main Menu, selects to go to Movie Notes Menu
         elif action_code == codes.MAIN_NOTES:
             movie_notes_list = self.app_model.get_movie_notes()
             self.user_interface.display_movie_notes(movie_notes_list)
-        # Calls main menu for reviews
+        # User on Main Menu, selects to get movie review
         elif action_code == codes.MAIN_REVIEWS:
             movie_name = self.user_interface.user_input("Enter a movie name: ")
             reviews = self.app_model.get_movie_reviews(movie_name)
             self.user_interface.display_movie_reviews(reviews)
-        # Calls main menu for recs
+        # User on Main Menu, selects to get movie recommendations
         elif action_code == codes.MAIN_RECOMMENDATIONS:
-            keyword = self.user_interface.user_input("Enter a movie keyword(ex: slapstick-comedy): ")
+            keyword = self.user_interface.user_input("Enter a movie keyword (ex: slapstick-comedy): ")
             recommendations = self.app_model.get_movie_recommendations(keyword)
             self.user_interface.display_movie_recommendations(recommendations)
-        # Main menu quit function. Displays thank you message
+        # User on Main Menu, selects to quit app
         elif action_code == codes.MAIN_QUIT:
             self.app_model.save_data()
             self.user_interface.display_message("*** Thank you for using MovieJunkie ***")
             self.quit_app()
-        # Calls function to allow user to enter movie to watchlist
+        # User on Want to Watch Menu, selects to add movie to the list
         elif action_code == codes.WANT_WATCH_ADD:
             movie_name = self.user_interface.user_input("Enter a movie name: ")
             result = self.app_model.add_movie_want_watch(movie_name)
             movie_list = self.app_model.get_want_watch()
             self.user_interface.display_message(result)
             self.user_interface.display_want_watch(movie_list)
-        # Calls function to allow user to remove movie from watchlist
+        # User on Want to Watch Menu, selects to remove movie from the list
         elif action_code == codes.WANT_WATCH_REMOVE:
             movie_name = self.user_interface.user_input("Enter a movie to remove: ")
             result = self.app_model.remove_movie_want_watch(movie_name)
             movie_list = self.app_model.get_want_watch()
             self.user_interface.display_message(result)
             self.user_interface.display_want_watch(movie_list)
-        # Main menu for watchlist
+        # User on Want to Watch Menu, selects to go back to Main Menu
         elif action_code == codes.WANT_WATCH_MAIN:
             self.user_interface.display_main()
-        # Calls function to allow user to add movie to watched list
+         # User on Have Watched Menu, selects to add movie to the list
         elif action_code == codes.HAVE_WATCHED_ADD:
             movie_name = self.user_interface.user_input("Enter a movie name: ")
             result = self.app_model.add_movie_have_watched(movie_name)
             movie_list = self.app_model.get_have_watched()
             self.user_interface.display_message(result)
-            self.user_interface.display_have_watch(movie_list) # error somewhere here
-        # Calls function to allow user to remove from have watched list 
+            self.user_interface.display_have_watch(movie_list) 
+        # User on Have Watched Menu, selects to remove movie from the list 
         elif action_code == codes.HAVE_WATCHED_REMOVE:
             movie_name = self.user_interface.user_input("Enter a movie to remove: ")
             result = self.app_model.remove_movie_have_watched(movie_name)
             movie_list = self.app_model.get_have_watched()
             self.user_interface.display_message(result)
             self.user_interface.display_have_watch(movie_list)
-        # Calls main menu for have watched 
+        # User on Have Watched Menu, selects to go back to Main Menu
         elif action_code == codes.HAVE_WATCHED_MAIN:
             self.user_interface.display_main()
-        # Calls function to add to notes list
+        # User on Movie Notes Menu, selects to add note to the list
         elif action_code == codes.NOTES_ADD:
             movie_name = self.user_interface.user_input("Enter a movie to add/edit a note for: ")
             movie_note = self.user_interface.user_input("Enter a movie note: ")
@@ -93,17 +93,17 @@ class AppController:
             movie_notes_list = self.app_model.get_movie_notes()
             self.user_interface.display_message(result)
             self.user_interface.display_movie_notes(movie_notes_list)
-        # Calls function to remove from notes list 
+        # User on Movie Notes Menu, selects to remove note from the list 
         elif action_code == codes.NOTES_REMOVE:
             movie_name = self.user_interface.user_input("Enter a movie to remove a note from: ")
             result = self.app_model.remove_movie_note(movie_name)
             movie_notes_list = self.app_model.get_movie_notes()
             self.user_interface.display_message(result)
             self.user_interface.display_movie_notes(movie_notes_list)
-        # Calls function to go to main menu for notes
+        # User on Movie Notes Menu, selects to go back to Main Menu
         elif action_code == codes.NOTES_MAIN:
             self.user_interface.display_main()
-        # Calls function to get reviews
+        # User enters invalid menu choice
         else:
             self.user_interface.display_message("*** Invalid menu option ***")
 

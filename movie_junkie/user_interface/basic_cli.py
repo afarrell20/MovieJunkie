@@ -156,6 +156,7 @@ class UserInterface:
         """
         print()
         print("--- Movie Notes ---")
+        print()
         if type(movie_notes) == dict:
             for movie in sorted(movie_notes):
                 print(f'{movie} --> {movie_notes[movie]}')
