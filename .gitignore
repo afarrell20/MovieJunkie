@@ -1,6 +1,5 @@
 # Created files not included in repo
 Testing.py
-*.pickle
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
